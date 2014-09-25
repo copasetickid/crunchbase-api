@@ -6,6 +6,7 @@ module Crunchbase
     RESOURCE_LIST = 'organizations'
 
     attr_reader :name
+    attr_reader :email_address
     attr_reader :permalink
     attr_reader :description
     attr_reader :short_description
@@ -28,6 +29,12 @@ module Crunchbase
     attr_reader :products
     attr_reader :acquisitions
     attr_reader :ipo
+    attr_reader :primary_image
+    attr_reader :current_team
+    attr_reader :news
+    attr_reader :headquaters
+    attr_reader :categories
+    attr_reader :websites
 
     def self.get(permalink)
       self.fetch_one permalink
@@ -47,6 +54,7 @@ module Crunchbase
       %w[
         description short_description founded_on permalink primary_role is_closed closed_on homepage_url
         name created_at updated_at total_funding_usd number_of_investments number_of_employees stock_symbol stock_exchange
+        email_address
       ]
     end
 
@@ -56,7 +64,8 @@ module Crunchbase
 
     def relationships
       %w[
-        competitors funding_rounds founders products acquisitions ipo
+        competitors funding_rounds founders products acquisitions ipo primary_image current_team news headquaters 
+        categories websites
       ]
     end
 

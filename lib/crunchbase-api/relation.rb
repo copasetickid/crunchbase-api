@@ -9,11 +9,15 @@ module Crunchbase
     attr_reader :updated_at
 
     def initialize(data)
-      @type = data['type']
-      @name = data['name']
-      @path = data['path']
-      @created_at = Time.at(data['created_at'])
-      @updated_at = Time.at(data['updated_at'])
+      # getting bad data from crunchbase, some nil values, we are ignoring these exceptions
+      begin
+        @type = data['type']
+        @name = data['name']
+        @path = data['path']
+        @created_at = Time.at(data['created_at'])
+        @updated_at = Time.at(data['updated_at'])
+      rescue
+      end
     end
 
     def fetch

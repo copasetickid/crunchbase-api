@@ -37,6 +37,10 @@ module Crunchbase
       self.fetch_list page, order
     end
 
+    def self.search_by_name(name, page = 1)
+       self.fetch_by_name name, page
+    end
+
     private
 
     def property_keys

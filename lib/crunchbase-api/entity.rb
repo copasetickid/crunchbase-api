@@ -21,6 +21,11 @@ module Crunchbase
       r.map { |i| Relation.new i }
     end
 
+    def self.fetch_by_name(name, page)
+      r = Crunchbase::fetch(self::RESOURCE_LIST, {name: name, page: page})["items"]
+      r.map { |i| Relation.new i }
+    end
+
     def property_keys
       []
     end
